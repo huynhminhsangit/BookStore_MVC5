@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MVCBookStore.Models.SACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Đây là trang chủ</h2>
+
+@foreach(var sach in Model)
+{
+    <li>
+        <a href="@Url.Action("Details","BookStore", new { id = sach.Masach})">
+            <img alt="@sach.Tensach" src="@sach.Anhbia"/>
+            <span>@sach.Tensach</span>
+        </a>
+    </li>
+}
