@@ -150,48 +150,51 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookStoreController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CHITIETDONTHANG.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CHUDE.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbQLBanSach.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbQLBanSach.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbQLBanSach.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbQLBanSach.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbQLBanSach.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DONDATHANG.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KHACHHANG.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHAXUATBAN.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLBanSach.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLBanSach.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLBanSach.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLBanSach.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLBanSach.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLBanSach.edmx</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SACH.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TACGIA.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VIETSACH.cs">
-      <DependentUpon>QLBanSach.tt</DependentUpon>
+      <DependentUpon>dbQLBanSach.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -204,16 +207,17 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\800x300_TAF50.jpg" />
+    <Content Include="images\cart.png" />
     <Content Include="images\Screenshot_23.png" />
-    <Content Include="Models\QLBanSach.Context.tt">
+    <Content Include="Models\dbQLBanSach.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLBanSach.Context.cs</LastGenOutput>
-      <DependentUpon>QLBanSach.edmx</DependentUpon>
+      <DependentUpon>dbQLBanSach.edmx</DependentUpon>
+      <LastGenOutput>dbQLBanSach.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\QLBanSach.tt">
+    <Content Include="Models\dbQLBanSach.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLBanSach.edmx</DependentUpon>
-      <LastGenOutput>QLBanSach.cs</LastGenOutput>
+      <DependentUpon>dbQLBanSach.edmx</DependentUpon>
+      <LastGenOutput>dbQLBanSach.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -221,12 +225,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="Models\QLBanSach.edmx">
+    <EntityDeploy Include="Models\dbQLBanSach.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLBanSach.Designer.cs</LastGenOutput>
+      <LastGenOutput>dbQLBanSach.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\QLBanSach.edmx.diagram">
-      <DependentUpon>QLBanSach.edmx</DependentUpon>
+    <Content Include="Models\dbQLBanSach.edmx.diagram">
+      <DependentUpon>dbQLBanSach.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -240,6 +244,15 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\BookStore\Index.cshtml" />
+    <Content Include="Views\BookStore\Chude.cshtml" />
+    <Content Include="Views\BookStore\NhaXuatBan.cshtml" />
+    <Content Include="Views\BookStore\SPTheoChuDe.cshtml" />
+    <Content Include="Views\BookStore\SPTheoNXB.cshtml" />
+    <Content Include="Views\BookStore\Details.cshtml" />
+    <Content Include="Views\NguoiDung\Signin.cshtml" />
+    <Content Include="Views\NguoiDung\Signup.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <None Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

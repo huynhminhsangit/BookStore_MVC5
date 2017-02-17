@@ -1,0 +1,35 @@
+﻿@using MVCBookStore.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight: bold">
+        <td>Mã sách</td>
+        <td>Tên sách</td>
+        <td>Ảnh bìa</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td>@item.iMaSach</td>
+            <td>@item.sTenSach</td>
+            <td><img src="~/images/Screenshot_23.png" width="100"/></td>
+            <td>@item.iSoLuong</td>
+            <td>@String.Format("{0:0,0}",item.dDonGia)</td>
+            <td>@String.Format("{0:0,0}",item.dThanhTien)</td>
+        </tr>
+    }
+    <tr style="font-weight:bold; text-align:right; color:red">
+        <td colspan="3">Số lượng sách: @ViewBag.TongSoLuong</td>
+        <td colspan="3">Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+    </tr>
+</table>
+
+

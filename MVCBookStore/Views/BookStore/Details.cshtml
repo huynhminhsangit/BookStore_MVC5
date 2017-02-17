@@ -1,0 +1,52 @@
+﻿<style>
+    #h2 {
+        text-transform: uppercase;
+    }
+    #Datmua a {
+        clear: both;
+        color: white;
+        display: block;
+        padding-top: 10px;
+        background-color: red;
+        width: 120px;
+        height: 35px;
+        float: right;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        text-transform: uppercase;
+    }
+    #Datmua a:hover {
+        background-color: gray;
+        color:red;
+    }
+</style>
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT SÁCH</h2>
+<div>
+    <div style="width:40%; float:left; border-left: dotted 1px; border-color: azure">
+        <img src="~/images/Screenshot_23.png" width="300" />
+    </div>
+    <div style="width:60%; float:left; padding: 10px">
+        <h4 style="font-weight: bold; color: red"> Tên sách: @Model.Tensach</h4>
+        <p style="text-align:justify"><span style="font-weight:bold">Mô tả: </span>@Model.Mota</p>
+        <p style="font-weight:bold">Giá bán: <span style="color:red; font-size:16pt">@Model.Giaban VNĐ</span></p>
+    </div>
+    <div>
+        <div id="Datmua">
+            @*<a href="@Url.Action("AddToCash", "ShoppingCard")" class="list-group-item">
+                đặt mua
+            </a>*@
+            <a href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSach = @Model.Masach, @strURL = Request.Url.ToString()})" class="list-group-item">
+                đặt mua
+            </a>
+        </div>
+    </div>
+</div>
+
