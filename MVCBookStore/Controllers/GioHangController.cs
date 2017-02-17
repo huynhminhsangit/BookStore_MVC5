@@ -89,5 +89,48 @@ namespace MVCBookStore.Controllers
             ViewBag.TongTien = TongTien();
             return PartialView();
         }
+
+        // Xóa sản phẩm khỏi giỏ hàng
+        public ActionResult XoaGioHang(int iMaSp)
+        {
+            // Lấy giỏ hàng từ Session
+            List<GioHang> lstGioHang = LayGioHang();
+            // Kiểm tra sản phẩm đã có trong Session["GioHang"]
+            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.iMaSach == iMaSp);
+            // Nếu đã tồn tại thì cho sửa số lượng
+            if(sanpham != null)
+            {
+                lstGioHang.RemoveAll(n => n.iMaSach == iMaSp);
+                return RedirectToAction("GioHang");
+            }
+            if (lstGioHang.Count == 0)
+                return RedirectToAction("Index", "BookStore");
+            return RedirectToAction("GioHang");
+        }
+
+        // Cập nhật giỏ hàng
+        //[HttpPost]
+        public ActionResult CapNhatGioHang(int iMaSp, FormCollection collection)
+        {
+            // Lấy giỏ hàng từ Session 
+            List<GioHang> lstGioHang = LayGioHang();
+            // Kiểm tra sản phẩm đã có trong Session["GioHang"]
+            GioHang sanpham = lstGioHang.SingleOrDefault(n => n.iMaSach == iMaSp);
+            // Nếu tồn tại thì cho sửa SoLuong
+            if(sanpham != null)
+            {
+                sanpham.iSoLuong = int.Parse(collection["txtSoLuong"].ToString());
+            }
+            return RedirectToAction("GioHang");
+        }
+
+        // Xóa tất cả sản phẩm khỏi giỏ hàng
+        public ActionResult XoaTatCaGioHang()
+        {
+            // Lấy giỏ hàng từ Session["GioHang"]
+            List<GioHang> lstGioHang = LayGioHang();
+            lstGioHang.Clear();
+            return RedirectToAction("Index", "BookStore");
+        }
     }
 }

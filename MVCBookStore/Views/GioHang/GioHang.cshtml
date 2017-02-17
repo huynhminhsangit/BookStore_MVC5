@@ -14,6 +14,9 @@
         <td>Số lượng</td>
         <td>Đơn giá</td>
         <td>Thành tiền</td>
+        <td width="50px"></td>
+        <td width="50px"></td>
+        <td width="50px"></td>
     </tr>
     @foreach (var item in Model)
     {
@@ -21,14 +24,27 @@
             <td>@item.iMaSach</td>
             <td>@item.sTenSach</td>
             <td><img src="~/images/Screenshot_23.png" width="100"/></td>
-            <td>@item.iSoLuong</td>
-            <td>@String.Format("{0:0,0}",item.dDonGia)</td>
-            <td>@String.Format("{0:0,0}",item.dThanhTien)</td>
+            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaSp = item.iMaSach }))
+            {
+                <td>
+                    <input type="number" min="1" name="txtSoLuong" value="@item.iSoLuong" style="background-color:yellowgreen" />
+                </td>
+                <td>@String.Format("{0:0,0}",item.dDonGia)</td>
+                <td>@String.Format("{0:0,0}",item.dThanhTien)</td>
+                <td><a href="@Url.Action("Details","BookStore", new { id = item.iMaSach})">Chi tiết</a></td>
+                <td>@Html.ActionLink("Xóa","XoaGioHang", new { @iMaSp = item.iMaSach})</td>
+                <td><input type="submit" value="Cập nhật" /></td>
+            }
         </tr>
     }
     <tr style="font-weight:bold; text-align:right; color:red">
-        <td colspan="3">Số lượng sách: @ViewBag.TongSoLuong</td>
-        <td colspan="3">Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+        <td colspan="4">Số lượng sách: @ViewBag.TongSoLuong</td>
+        <td colspan="5">Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+    </tr>
+    <tr style="font-weight:bold; text-align:right;">
+        <td colspan="9">
+            @Html.ActionLink("Xóa Giỏ Hàng","XoaTatCaGioHang","GioHang")
+        </td>
     </tr>
 </table>
 
