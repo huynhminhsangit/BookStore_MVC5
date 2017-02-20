@@ -1,0 +1,8 @@
+﻿@if (Session["TaiKhoan"] == null)
+{
+    <a href="@Url.Action("Signin","NguoiDung")" name="Signin">Sign In</a>
+}
+else
+{
+    <a>Xin chào, @ViewBag.TENKH</a>
+}

@@ -18,7 +18,7 @@ namespace MVCBookStore.Controllers
             return View();
         }
 
-        // Sign Up
+        // Sign Up - Đăng ký
         [HttpGet]
         public ActionResult Signup()
         {
@@ -64,19 +64,19 @@ namespace MVCBookStore.Controllers
                 data.KHACHHANGs.Add(kh);
                 data.SaveChanges();
 
-                return RedirectToAction("Signin");
+                return RedirectToAction("Signup");
 
             }
             return this.Signup();
         }
 
-        // Sign In
+        // Sign In - Đăng nhập
         [HttpGet]
         public ActionResult Signin()
         {
             return View();
         }
-        // Hàm Post nhận dữ liệu từ trang đăng ký và thực hiện việc tạo mới phiên làm việc
+        // Hàm Post nhận dữ liệu từ trang đăng nhập và thực hiện việc tạo mới phiên làm việc
         [HttpPost]
         public ActionResult Signin(FormCollection collection)
         {
@@ -99,11 +99,24 @@ namespace MVCBookStore.Controllers
                 {
                     ViewBag.ThongBao = "Chúc mừng bạn đã đăng nhập thành công!";
                     Session["TaiKhoan"] = kh;
+                    ViewBag.tenkh = kh.HoTen;
+                    return RedirectToAction("Index", "BookStore");
+                    
                 }
                 else
                     ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng!";
             }
             return View();
+        }
+
+        public ActionResult showNguoiDung()
+        {
+            KHACHHANG kh = new KHACHHANG() ;
+            if (Session["TaiKhoan"] != null) {
+                kh = (KHACHHANG)Session["TaiKhoan"];
+                ViewBag.TENKH = kh.HoTen;
+            }
+            return PartialView();
         }
     }
 }

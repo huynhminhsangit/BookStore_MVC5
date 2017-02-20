@@ -69,3 +69,8 @@ c:\Users\huynh\Documents\Visual Studio 2017\Projects\MVCBookStore\MVCBookStore\b
 c:\Users\huynh\Documents\Visual Studio 2017\Projects\MVCBookStore\MVCBookStore\bin\EntityFramework.SqlServer.dll
 c:\Users\huynh\Documents\Visual Studio 2017\Projects\MVCBookStore\MVCBookStore\bin\EntityFramework.xml
 c:\Users\huynh\Documents\Visual Studio 2017\Projects\MVCBookStore\MVCBookStore\bin\EntityFramework.SqlServer.xml
+C:\Users\huynh\documents\visual studio 2017\Projects\MVCBookStore\MVCBookStore\bin\Edi.Web.MvcExtensions.dll
+C:\Users\huynh\documents\visual studio 2017\Projects\MVCBookStore\MVCBookStore\bin\PagedList.dll
+C:\Users\huynh\documents\visual studio 2017\Projects\MVCBookStore\MVCBookStore\bin\PagedList.Mvc.dll
+C:\Users\huynh\documents\visual studio 2017\Projects\MVCBookStore\MVCBookStore\bin\PagedList.xml
+C:\Users\huynh\documents\visual studio 2017\Projects\MVCBookStore\MVCBookStore\bin\PagedList.Mvc.xml

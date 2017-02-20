@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Cùng controler thì sài Html.Action -->
-                <a class="navbar-brand" href="#">Book Store</a> 
+                <a class="navbar-brand" href="@Url.Action("Index","BookStore")">Book Store</a> 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,8 +48,8 @@
                     </li>
                     <li>
                         <!-- Khác controller sử dụng Url.Action -->
-                        <!-- Signup là tên action, NguoiDung la tên controller -->
-                        <a href="@Url.Action("Signup","NguoiDung")">Sign Up</a> 
+                        <!-- Signin là tên action, NguoiDung la tên controller -->
+                       @Html.Action("showNguoiDung","NguoiDung")
                     </li>
                     <li>
                         <a href="@Url.Action("GioHang","GioHang")">

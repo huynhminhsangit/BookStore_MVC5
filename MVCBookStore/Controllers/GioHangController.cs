@@ -132,5 +132,61 @@ namespace MVCBookStore.Controllers
             lstGioHang.Clear();
             return RedirectToAction("Index", "BookStore");
         }
+
+        // Hiển thị View DatHang để cập nhật thông tin cho đơn hàng
+        [HttpGet]
+        public ActionResult DatHang()
+        {
+            // Kiểm tra đăng nhập
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+                return RedirectToAction("Signin", "NguoiDung");
+            if (Session["GioHang"] == null)
+                return RedirectToAction("Index", "BookStore");
+
+            // Lấy giỏ hàng từ Session
+            List<GioHang> lstGioHang = LayGioHang();
+            ViewBag.TongSoLuong = TongSoLuong();
+            ViewBag.TongTien = TongTien();
+
+            return View(lstGioHang);
+        }
+
+        [HttpPost]
+        public ActionResult DatHang(FormCollection collection)
+        {
+            // Thêm đơn hàng
+            DONDATHANG ddh = new DONDATHANG();
+            KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+            List<GioHang> gioHang = LayGioHang();
+            ddh.MaKH = kh.MaKH;
+            ddh.Ngaydat = DateTime.Now;
+            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["NgayGiao"]);
+            ddh.Ngaygiao = DateTime.Parse(ngaygiao);
+            ddh.Tinhtranggiaohang = false;
+            ddh.Dathanhtoan = false;
+
+            data.DONDATHANGs.Add(ddh);
+            data.SaveChanges();
+
+            // Thêm chi tiết đơn hàng
+            foreach( var item in gioHang)
+            {
+                CHITIETDONTHANG ctdh = new CHITIETDONTHANG();
+                ctdh.MaDonHang = ddh.MaDonHang;
+                ctdh.Masach = item.iMaSach;
+                ctdh.Soluong = item.iSoLuong;
+                ctdh.Dongia = (decimal)item.dDonGia;
+                data.CHITIETDONTHANGs.Add(ctdh);
+            }
+            data.SaveChanges();
+            Session["GioHang"] = null;
+            return RedirectToAction("XacNhanDonHang", "GioHang");
+        }
+
+        // Hiển thị View XacNhanDonHang 
+        public ActionResult XacNhanDonHang()
+        {
+            return View();
+        }
     }
 }
